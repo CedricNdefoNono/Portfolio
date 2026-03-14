@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NNCD Consulting — Tactical AI for Growing Businesses</title>
+<meta name="description" content="Fixed-scope AI deployments for small and medium businesses. Working systems in weeks, not months. No long discovery phases. No surprises.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:       #0A0F14;
+  --ink-mid:   #2E3D4F;
+  --ink-muted: #6B7C8D;
+  --blue:      #1455A3;
+  --blue-lt:   #2872CC;
+  --blue-pale: #EBF2FC;
+  --teal:      #0B6E6C;
+  --teal-lt:   #19A8A6;
+  --teal-pale: #E8F7F7;
+  --amber:     #A85B08;
+  --amber-pale:#FEF3E6;
+  --coral:     #B83B2A;
+  --coral-pale:#FCECEA;
+  --border:    #D8E2EC;
+  --border-lt: #EDF2F7;
+  --bg:        #F6F9FC;
+  --white:     #FFFFFF;
+  --serif:     'Fraunces', Georgia, serif;
+  --sans:      'DM Sans', system-ui, sans-serif;
+  --mono:      'DM Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--sans); background: var(--white); color: var(--ink); line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ─ Layout ─ */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+.wrap-narrow { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+
+/* ─ Nav ─ */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-lt);
+  padding: 0 28px; height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.nav-mark {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: var(--ink); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: -0.5px;
+}
+.nav-brand-name { font-size: 15px; font-weight: 500; color: var(--ink); }
+.nav-links { display: flex; align-items: center; gap: 6px; }
+.nav-link {
+  padding: 7px 14px; border-radius: 7px;
+  font-size: 13px; color: var(--ink-muted);
+  transition: all 0.15s; border: none; background: none; cursor: pointer; font-family: var(--sans);
+}
+.nav-link:hover { background: var(--bg); color: var(--ink); }
+.nav-cta {
+  padding: 8px 18px; border-radius: 8px;
+  background: var(--ink); color: var(--white);
+  font-size: 13px; font-weight: 500;
+  transition: opacity 0.15s;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ─ Hero ─ */
+.hero {
+  padding: 96px 28px 80px;
+  text-align: center;
+  background: var(--white);
+  border-bottom: 1px solid var(--border-lt);
+}
+.hero-kicker {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--blue-lt);
+  margin-bottom: 20px; display: inline-block;
+}
+.hero-h1 {
+  font-family: var(--serif); font-size: clamp(36px, 6vw, 64px);
+  font-weight: 400; line-height: 1.1; color: var(--ink);
+  margin-bottom: 20px; letter-spacing: -1px;
+}
+.hero-h1 em { font-style: italic; color: var(--blue); }
+.hero-sub {
+  font-size: 18px; font-weight: 300; color: var(--ink-mid);
+  max-width: 580px; margin: 0 auto 36px; line-height: 1.65;
+}
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+.btn-primary {
+  padding: 13px 28px; border-radius: 9px;
+  background: var(--ink); color: var(--white);
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  border: none; cursor: pointer; transition: opacity 0.15s;
+  text-decoration: none; display: inline-block;
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-secondary {
+  padding: 12px 28px; border-radius: 9px;
+  background: transparent; color: var(--ink);
+  font-family: var(--sans); font-size: 14px; font-weight: 400;
+  border: 1.5px solid var(--border); cursor: pointer; transition: all 0.15s;
+  text-decoration: none; display: inline-block;
+}
+.btn-secondary:hover { border-color: var(--ink-muted); background: var(--bg); }
+
+.hero-proof {
+  display: flex; align-items: center; justify-content: center; gap: 32px;
+  flex-wrap: wrap; padding-top: 32px; border-top: 1px solid var(--border-lt);
+}
+.proof-item { text-align: center; }
+.proof-num { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--ink); display: block; }
+.proof-label { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ─ Section wrapper ─ */
+.section { padding: 80px 0; }
+.section-alt { background: var(--bg); }
+.section-dark { background: var(--ink); color: var(--white); }
+.sec-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--blue-lt);
+  margin-bottom: 12px; display: block;
+}
+.sec-label-light { color: var(--teal-lt); }
+.sec-h2 {
+  font-family: var(--serif); font-size: clamp(26px, 4vw, 40px);
+  font-weight: 400; line-height: 1.2; color: var(--ink);
+  margin-bottom: 16px; letter-spacing: -0.5px;
+}
+.sec-h2-light { color: var(--white); }
+.sec-sub {
+  font-size: 16px; font-weight: 300; color: var(--ink-mid);
+  max-width: 560px; line-height: 1.65; margin-bottom: 48px;
+}
+.sec-sub-light { color: rgba(255,255,255,0.6); }
+
+/* ─ Value props ─ */
+.props-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.prop-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px;
+}
+.prop-icon { font-size: 22px; margin-bottom: 14px; }
+.prop-title { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+.prop-desc { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+
+/* ─ Services ─ */
+.svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.svc-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 28px 28px 24px;
+  display: flex; flex-direction: column;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  position: relative;
+}
+.svc-card:hover { border-color: var(--blue-lt); box-shadow: 0 8px 32px rgba(20,85,163,0.07); }
+.svc-card.featured { border-color: var(--blue); }
+.svc-popular {
+  position: absolute; top: -11px; left: 28px;
+  background: var(--blue); color: var(--white);
+  font-size: 10px; font-weight: 500; padding: 3px 12px;
+  border-radius: 20px; font-family: var(--mono); letter-spacing: 0.5px;
+}
+.svc-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+.svc-icon { font-size: 26px; }
+.svc-duration {
+  font-family: var(--mono); font-size: 11px; color: var(--ink-muted);
+  background: var(--bg); padding: 3px 10px; border-radius: 20px;
+}
+.svc-title { font-size: 18px; font-weight: 500; margin-bottom: 10px; letter-spacing: -0.2px; }
+.svc-desc { font-size: 14px; color: var(--ink-mid); line-height: 1.6; margin-bottom: 18px; flex: 1; }
+.svc-divider { height: 1px; background: var(--border-lt); margin-bottom: 16px; }
+.svc-deliverables-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-muted); margin-bottom: 8px; font-family: var(--mono); }
+.svc-deliverables { list-style: none; margin-bottom: 20px; }
+.svc-deliverables li { font-size: 13px; color: var(--ink-mid); padding: 4px 0 4px 18px; position: relative; border-bottom: 1px solid var(--border-lt); }
+.svc-deliverables li:last-child { border-bottom: none; }
+.svc-deliverables li::before { content: "→"; position: absolute; left: 0; color: var(--blue-lt); font-size: 12px; top: 5px; }
+.svc-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.svc-price { font-family: var(--serif); font-size: 20px; color: var(--ink); }
+.svc-cta {
+  padding: 9px 20px; border-radius: 8px;
+  background: var(--ink); color: var(--white);
+  font-size: 13px; font-weight: 500; border: none; cursor: pointer;
+  font-family: var(--sans); white-space: nowrap;
+  text-decoration: none; display: inline-block;
+  transition: opacity 0.15s;
+}
+.svc-cta:hover { opacity: 0.82; }
+
+/* ─ Process ─ */
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.step {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 24px 20px; text-align: center;
+}
+.step-num { font-family: var(--serif); font-size: 36px; font-weight: 400; color: var(--teal-lt); display: block; margin-bottom: 10px; }
+.step-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
+.step-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+/* ─ Industries ─ */
+.industries-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.industry-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.industry-icon { font-size: 20px; flex-shrink: 0; }
+.industry-name { font-size: 14px; font-weight: 500; }
+.industry-example { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ─ About ─ */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.about-credentials { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.cred-item { display: flex; align-items: flex-start; gap: 12px; }
+.cred-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue-lt); flex-shrink: 0; margin-top: 7px; }
+.cred-text { font-size: 14px; color: var(--ink-mid); line-height: 1.5; }
+.cred-text strong { color: var(--ink); font-weight: 500; }
+.about-quote {
+  background: var(--bg); border-left: 3px solid var(--blue);
+  border-radius: 0 12px 12px 0; padding: 24px 28px;
+  font-family: var(--serif); font-size: 20px; font-weight: 300;
+  color: var(--ink-mid); line-height: 1.55; font-style: italic;
+}
+
+/* ─ FAQ ─ */
+.faq-list { display: flex; flex-direction: column; gap: 0; }
+.faq-item { border-bottom: 1px solid var(--border-lt); }
+.faq-item:first-child { border-top: 1px solid var(--border-lt); }
+.faq-q {
+  width: 100%; text-align: left; background: none; border: none;
+  padding: 20px 0; cursor: pointer; display: flex; align-items: center;
+  justify-content: space-between; gap: 16px;
+  font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--ink);
+}
+.faq-chevron { font-size: 18px; color: var(--ink-muted); transition: transform 0.2s; flex-shrink: 0; }
+.faq-item.open .faq-chevron { transform: rotate(45deg); }
+.faq-a { display: none; padding-bottom: 20px; font-size: 14px; color: var(--ink-mid); line-height: 1.7; }
+.faq-item.open .faq-a { display: block; }
+
+/* ─ CTA banner ─ */
+.cta-banner {
+  background: var(--ink); border-radius: 20px;
+  padding: 56px 48px; text-align: center; margin: 0 28px 80px;
+}
+.cta-banner h2 { font-family: var(--serif); font-size: 36px; font-weight: 400; color: var(--white); margin-bottom: 14px; }
+.cta-banner p { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-white { background: var(--white); color: var(--ink); }
+.btn-white:hover { opacity: 0.9; }
+.btn-outline-white {
+  padding: 13px 28px; border-radius: 9px;
+  border: 1.5px solid rgba(255,255,255,0.25); color: var(--white);
+  font-family: var(--sans); font-size: 14px; background: transparent; cursor: pointer;
+  transition: border-color 0.15s; text-decoration: none; display: inline-block;
+}
+.btn-outline-white:hover { border-color: rgba(255,255,255,0.6); }
+
+/* ─ Footer ─ */
+.footer {
+  background: var(--bg); border-top: 1px solid var(--border-lt);
+  padding: 40px 28px; text-align: center;
+}
+.footer-brand { font-family: var(--serif); font-size: 18px; color: var(--ink); margin-bottom: 8px; }
+.footer-sub { font-size: 13px; color: var(--ink-muted); margin-bottom: 20px; }
+.footer-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 24px; flex-wrap: wrap; }
+.footer-link { font-size: 13px; color: var(--ink-muted); transition: color 0.15s; }
+.footer-link:hover { color: var(--blue); }
+.footer-copy { font-size: 12px; color: var(--border); }
+
+/* ─ Responsive ─ */
+@media (max-width: 800px) {
+  .props-grid { grid-template-columns: 1fr; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: repeat(2,1fr); }
+  .industries-grid { grid-template-columns: repeat(2,1fr); }
+  .about-grid { grid-template-columns: 1fr; }
+  .cta-banner { padding: 40px 24px; margin: 0 0 60px; border-radius: 0; }
+  .hero { padding: 64px 28px 56px; }
+  .nav-links .nav-link { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ─────────────────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-mark">NN</div>
+    <span class="nav-brand-name">NNCD Consulting</span>
+  </div>
+  <div class="nav-links">
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#how-it-works" class="nav-link">How it works</a>
+    <a href="#industries" class="nav-link">Industries</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="mailto:cedric.ndefonono@gmail.com?subject=NNCD%20Consulting%20%E2%80%94%20Discovery%20Call" class="nav-cta">Book a call</a>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <span class="hero-kicker">NNCD Consulting · Montreal, Canada</span>
+  <h1 class="hero-h1">Tactical AI for<br><em>growing businesses</em></h1>
+  <p class="hero-sub">Fixed-scope AI deployments for SMBs that cannot afford enterprise consulting timelines. Working systems in weeks, not months. No long discovery phases. No surprises.</p>
+  <div class="hero-actions">
+    <a href="mailto:cedric.ndefonono@gmail.com?subject=NNCD%20Consulting%20%E2%80%94%20Discovery%20Call" class="btn-primary">Book a free discovery call</a>
+    <a href="#services" class="btn-secondary">View packages</a>
+  </div>
+  <div class="hero-proof">
+    <div class="proof-item"><span class="proof-num">10+</span><span class="proof-label">Years enterprise tech experience</span></div>
+    <div class="proof-item"><span class="proof-num">4</span><span class="proof-label">Fixed-scope packages</span></div>
+    <div class="proof-item"><span class="proof-num">30 days</span><span class="proof-label">Typical deployment timeline</span></div>
+    <div class="proof-item"><span class="proof-num">0</span><span class="proof-label">Open-ended retainers</span></div>
+  </div>
+</section>
+
+<!-- ── Value props ────────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="wrap">
+    <div class="props-grid">
+      <div class="prop-card">
+        <div class="prop-icon">⚡</div>
+        <div class="prop-title">Fast, fixed delivery</div>
+        <div class="prop-desc">Every engagement has a defined scope, a fixed price, and a clear end date. You know exactly what you are getting and what it will cost before we start.</div>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">🎯</div>
+        <div class="prop-title">Tactical, not theoretical</div>
+        <div class="prop-desc">No strategy decks, no multi-month transformation programmes. We identify one high-value AI problem, deploy a working solution, and hand it over to your team.</div>
+      </div>
+      <div class="prop-card">
+        <div class="prop-icon">🔓</div>
+        <div class="prop-title">You own everything</div>
+        <div class="prop-desc">All code, documentation, and configuration is yours at handover. No vendor lock-in, no ongoing licence fees, no dependency on NNCD to keep the system running.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Services ──────────────────────────────────────────────────────────── -->
+<section class="section section-alt" id="services">
+  <div class="wrap">
+    <span class="sec-label">Service packages</span>
+    <h2 class="sec-h2">Four packages.<br>One clear outcome each.</h2>
+    <p class="sec-sub">Choose the package that matches your most pressing problem. Not sure which one? The discovery call will make it clear.</p>
+    <div class="svc-grid">
+
+      <div class="svc-card featured">
+        <div class="svc-popular">MOST POPULAR</div>
+        <div class="svc-head">
+          <span class="svc-icon">📚</span>
+          <span class="svc-duration">4 weeks · Fixed scope</span>
+        </div>
+        <div class="svc-title">30-day RAG assistant</div>
+        <div class="svc-desc">Deploy an AI assistant grounded in your business documents — manuals, policies, product specs, past proposals. Your staff ask questions in natural language and get accurate, cited answers drawn from your own content. No hallucinations. No guesswork.</div>
+        <div class="svc-divider"></div>
+        <div class="svc-deliverables-label">What you receive</div>
+        <ul class="svc-deliverables">
+          <li>Configured vector knowledge base loaded with your documents</li>
+          <li>Web chat or API interface ready for your team</li>
+          <li>Admin guide for adding new documents going forward</li>
+          <li>30-day post-handover support included</li>
+        </ul>
+        <div class="svc-footer">
+          <span class="svc-price">From $3,500 CAD</span>
+          <a href="mailto:cedric.ndefonono@gmail.com?subject=NNCD%20%E2%80%94%2030-day%20RAG%20Assistant" class="svc-cta">Get started</a>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-head">
+          <span class="svc-icon">📄</span>
+          <span class="svc-duration">3 weeks · Fixed scope</span>
+        </div>
+        <div class="svc-title">Document intelligence setup</div>
+        <div class="svc-desc">Automate the extraction of key information from your recurring documents — contracts, invoices, reports, applications, or compliance filings. Structured data output goes directly into your spreadsheet, database, or CRM. What your team does manually in hours, the pipeline does in seconds.</div>
+        <div class="svc-divider"></div>
+        <div class="svc-deliverables-label">What you receive</div>
+        <ul class="svc-deliverables">
+          <li>Configured extraction pipeline for your document types</li>
+          <li>Structured JSON or CSV output</li>
+          <li>Prompt templates engineered for your specific fields</li>
+          <li>Accuracy evaluation report with test results</li>
+        </ul>
+        <div class="svc-footer">
+          <span class="svc-price">From $2,800 CAD</span>
+          <a href="mailto:cedric.ndefonono@gmail.com?subject=NNCD%20%E2%80%94%20Document%20Intelligence" class="svc-cta">Get started</a>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-head">
+          <span class="svc-icon">🗺️</span>
+          <span class="svc-duration">1-day workshop + 1-week report</span>
+        </div>
+        <div class="svc-title">AI maturity assessment</div>
+        <div class="svc-desc">A structured half-day workshop with your leadership team that scores your organisation across six AI readiness dimensions. Delivered the following week as a prioritised 12-month roadmap with a shortlist of three use cases recommended for an immediate pilot. The ideal first engagement before committing to a larger deployment.</div>
+        <div class="svc-divider"></div>
+        <div class="svc-deliverables-label">What you receive</div>
+        <ul class="svc-deliverables">
+          <li>Maturity radar chart with dimension scores</li>
+          <li>Prioritised 12-month AI roadmap</li>
+          <li>Top 3 use case recommendations with ROI framing</li>
+          <li>Executive presentation deck ready to share</li>
+        </ul>
+        <div class="svc-footer">
+          <span class="svc-price">$1,800 CAD</span>
+          <a href="mailto:cedric.ndefonono@gmail.com?subject=NNCD%20%E2%80%94%20AI%20Maturity%20Assessment" class="svc-cta">Get started</a>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-head">
+          <span class="svc-icon">💬</span>
+          <span class="svc-duration">6 weeks · Fixed scope</span>
+        </div>
+        <div class="svc-title">Custom AI chatbot</div>
+        <div class="svc-desc">A customer-facing or internal chatbot tailored to your specific workflows. Intent classification routes each question to the right response path. Grounded in your knowledge base so answers are accurate and on-brand. Deployable as a website widget or internal tool, with a monitoring dashboard included.</div>
+        <div class="svc-divider"></div>
+        <div class="svc-deliverables-label">What you receive</div>
+        <ul class="svc-deliverables">
+          <li>Deployed chatbot as a website widget or internal tool</li>
+          <li>Intent routing configuration for your use cases</li>
+          <li>Knowledge base integration with your content</li>
+          <li>Monitoring dashboard showing usage and quality metrics</li>
+        </ul>
+        <div class="svc-footer">
+          <span class="svc-price">From $4,500 CAD</span>
+          <a href="mailto:cedric.ndefonono@gmail.com?subject=NNCD%20%E2%80%94%20Custom%20AI%20Chatbot" class="svc-cta">Get started</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── How it works ───────────────────────────────────────────────────────── -->
+<section class="section section-dark" id="how-it-works">
+  <div class="wrap">
+    <span class="sec-label sec-label-light">The process</span>
+    <h2 class="sec-h2 sec-h2-light">Four steps.<br>No ambiguity.</h2>
+    <p class="sec-sub sec-sub-light">Every engagement follows the same disciplined process. You always know where things stand.</p>
+    <div class="process-steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <div class="step-title">Discovery call</div>
+        <div class="step-desc">A free 30-minute conversation to understand your problem and confirm which package — if any — is the right fit.</div>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <div class="step-title">Fixed proposal</div>
+        <div class="step-desc">Scope, deliverables, timeline, and price agreed in writing before any work begins. No scope creep, no surprises.</div>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <div class="step-title">Build and deploy</div>
+        <div class="step-desc">The system is built, tested with your data, and deployed within the agreed timeline. Weekly check-ins throughout.</div>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <div class="step-title">Handover</div>
+        <div class="step-desc">Full documentation, team training, and 30-day post-handover support. You own the system and can run it independently.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Industries ────────────────────────────────────────────────────────── -->
+<section class="section" id="industries">
+  <div class="wrap">
+    <span class="sec-label">Industries served</span>
+    <h2 class="sec-h2">Built for businesses<br>across every sector.</h2>
+    <p class="sec-sub">The AI patterns that power these packages apply across industries. The domain expertise you bring; the deployment expertise we provide.</p>
+    <div class="industries-grid">
+      <div class="industry-card"><span class="industry-icon">⚖️</span><div><div class="industry-name">Legal & accounting</div><div class="industry-example">Contract review, document extraction</div></div></div>
+      <div class="industry-card"><span class="industry-icon">🏥</span><div><div class="industry-name">Healthcare</div><div class="industry-example">Clinical document processing, patient Q&A</div></div></div>
+      <div class="industry-card"><span class="industry-icon">🏦</span><div><div class="industry-name">Financial services</div><div class="industry-example">Report analysis, compliance document review</div></div></div>
+      <div class="industry-card"><span class="industry-icon">🛍️</span><div><div class="industry-name">Retail & e-commerce</div><div class="industry-example">Customer support automation, product Q&A</div></div></div>
+      <div class="industry-card"><span class="industry-icon">🏠</span><div><div class="industry-name">Real estate</div><div class="industry-example">Listing assistant, lease document extraction</div></div></div>
+      <div class="industry-card"><span class="industry-icon">👥</span><div><div class="industry-name">HR & recruitment</div><div class="industry-example">Policy assistant, CV screening pipeline</div></div></div>
+      <div class="industry-card"><span class="industry-icon">📦</span><div><div class="industry-name">Logistics</div><div class="industry-example">Operations assistant, document automation</div></div></div>
+      <div class="industry-card"><span class="industry-icon">🎓</span><div><div class="industry-name">Education</div><div class="industry-example">Knowledge base assistant, content processing</div></div></div>
+      <div class="industry-card"><span class="industry-icon">🏗️</span><div><div class="industry-name">Professional services</div><div class="industry-example">Proposal automation, knowledge management</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── About ─────────────────────────────────────────────────────────────── -->
+<section class="section section-alt" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <span class="sec-label">About NNCD Consulting</span>
+        <h2 class="sec-h2" style="margin-bottom:16px">Enterprise-grade AI.<br>SMB-scale delivery.</h2>
+        <p style="font-size:15px;color:var(--ink-mid);line-height:1.7;margin-bottom:20px">NNCD Consulting was built on a simple observation: the AI deployments that create the most value for large enterprises — RAG assistants, document intelligence pipelines, customer chatbots — are technically achievable for small businesses at a fraction of the cost, but nobody was packaging them that way.</p>
+        <p style="font-size:15px;color:var(--ink-mid);line-height:1.7">Cedric Nono Ndefo brings over a decade of enterprise technology sales and solutions architecture experience across Huawei, Orange Business, and Datavalet, combined with specialist AI engineering capability.</p>
+        <div class="about-credentials">
+          <div class="cred-item"><span class="cred-dot"></span><div class="cred-text"><strong>10+ years</strong> enterprise presales and solutions architecture — Huawei, Orange Business, Datavalet</div></div>
+          <div class="cred-item"><span class="cred-dot"></span><div class="cred-text"><strong>MSc Telecommunications Engineering</strong> — IMT Atlantique · PMP · MBA in Business Engineering — ESG Paris</div></div>
+          <div class="cred-item"><span class="cred-dot"></span><div class="cred-text"><strong>AI engineering</strong> — Google Cloud, Vertex AI, LangChain, RAG architecture, MLOps</div></div>
+          <div class="cred-item"><span class="cred-dot"></span><div class="cred-text"><strong>Bilingual</strong> — English and French · Based in Montreal, Canada</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="about-quote">"The best AI deployment for a small business is one that solves a real problem, runs reliably, and costs less than one month of manual work to replace it."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ───────────────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="wrap-narrow">
+    <span class="sec-label">Common questions</span>
+    <h2 class="sec-h2" style="margin-bottom:36px">Frequently asked</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I need technical staff to use the systems you deploy?<span class="faq-chevron">+</span></button>
+        <div class="faq-a">No. Every package is designed for non-technical users. The handover includes plain-language documentation and a training session for the people who will use the system day-to-day. If something breaks, the 30-day support period covers it.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What data do you need access to?<span class="faq-chevron">+</span></button>
+        <div class="faq-a">Only the documents or data directly relevant to the package. For a RAG assistant, that means the documents you want the system to answer questions about. For document extraction, a sample of the document types you process. We discuss data handling and privacy before any work begins, and we never retain your data after the engagement concludes.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How does fixed-price work in practice?<span class="faq-chevron">+</span></button>
+        <div class="faq-a">The proposal defines the scope precisely — which documents, which use cases, which interfaces, which deliverables. If something falls outside that scope, we discuss it and either include it in a follow-on engagement or adjust the proposal. The initial price does not change once you sign off on the proposal.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What AI models do you use?<span class="faq-chevron">+</span></button>
+        <div class="faq-a">The packages use leading commercial models — Claude (Anthropic) and Gemini (Google) — accessed via their APIs. Model selection depends on the use case, cost profile, and any data residency requirements your business has. Open-source models are available for deployments where keeping data entirely on your own infrastructure is a priority.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can you support us after the engagement ends?<span class="faq-chevron">+</span></button>
+        <div class="faq-a">The 30-day support period covers bug fixes and questions at no additional cost. Beyond that, we offer optional monthly maintenance retainers for businesses that want ongoing model updates, document base expansion, or monitoring reviews. This is always optional — the system is designed to run independently without it.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is my business too small for this?<span class="faq-chevron">+</span></button>
+        <div class="faq-a">These packages were designed specifically for businesses that are too small for enterprise AI consulting but large enough to have a real problem worth solving. If you have a recurring manual process that takes staff hours each week, or documents your team struggles to search or extract information from, a deployment is almost certainly justified. The discovery call will tell us both whether it makes sense.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ───────────────────────────────────────────────────────────────── -->
+<div class="wrap">
+  <div class="cta-banner">
+    <h2>Ready to see what AI can do<br>for your business?</h2>
+    <p>Book a free 30-minute discovery call. No commitment, no sales pitch — just an honest conversation about whether AI can solve a specific problem for you.</p>
+    <div class="cta-actions">
+      <a href="mailto:cedric.ndefonono@gmail.com?subject=NNCD%20Consulting%20%E2%80%94%20Discovery%20Call" class="btn-primary btn-white">Book a discovery call</a>
+      <a href="#services" class="btn-outline-white">Review the packages</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── Footer ────────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-brand">NNCD Consulting</div>
+  <div class="footer-sub">Tactical AI for growing businesses · Montreal, Canada</div>
+  <div class="footer-links">
+    <a href="#services" class="footer-link">Services</a>
+    <a href="#how-it-works" class="footer-link">How it works</a>
+    <a href="#industries" class="footer-link">Industries</a>
+    <a href="#about" class="footer-link">About</a>
+    <a href="mailto:cedric.ndefonono@gmail.com" class="footer-link">Contact</a>
+    <a href="../index.html" class="footer-link">AI Portfolio →</a>
+  </div>
+  <div class="footer-copy">© 2026 NNCD Consulting · Cedric Nono Ndefo</div>
+</footer>
+
+<script>
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>
