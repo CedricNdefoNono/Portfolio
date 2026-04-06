@@ -9,294 +9,208 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #0D1B2A;
-  --navy-mid: #1A2E42;
-  --blue: #1B6CA8;
-  --blue-light: #2E90D6;
-  --teal: #0E7C7B;
-  --teal-light: #1AA8A7;
-  --green: #1A6B3C;
-  --amber: #B45309;
-  --coral: #C0392B;
-  --purple: #5B3FA0;
-  --text: #0D1B2A;
-  --text-mid: #3A4B5C;
-  --text-muted: #6B7C8D;
-  --border: #D4DCE4;
-  --border-light: #EBF0F5;
-  --bg: #F7F9FC;
-  --bg-card: #FFFFFF;
-  --bg-mid: #EEF3F8;
-  --mono: 'DM Mono', monospace;
-  --sans: 'DM Sans', sans-serif;
+  --navy:#0D1B2A; --navy-mid:#1A2E42;
+  --blue:#1B6CA8; --blue-lt:#2E90D6;
+  --teal:#0E7C7B; --teal-lt:#1AA8A7;
+  --green:#1A6B3C; --amber:#B45309;
+  --coral:#A0320A; --purple:#5B3FA0; --orange:#B8520A;
+  --text:#0D1B2A; --text-mid:#3A4B5C; --text-muted:#6B7C8D;
+  --border:#D4DCE4; --border-lt:#EBF0F5;
+  --bg:#F7F9FC; --bg-card:#FFFFFF; --bg-mid:#EEF3F8;
+  --mono:'DM Mono',monospace; --sans:'DM Sans',sans-serif;
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.65; }
-
-/* ── Layout ── */
-.shell { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:15px;line-height:1.65}
 
 /* ── Top bar ── */
-.topbar {
-  background: var(--navy);
-  color: #fff;
-  padding: 0 24px;
-  position: sticky; top: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 56px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.topbar-brand { display: flex; align-items: center; gap: 10px; }
-.topbar-logo {
-  width: 30px; height: 30px; border-radius: 6px;
-  background: var(--blue-light);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--mono); font-size: 12px; font-weight: 500; color: #fff;
-  letter-spacing: -0.5px;
-}
-.topbar-name { font-size: 14px; font-weight: 500; color: #fff; }
-.topbar-sub { font-size: 11px; color: rgba(255,255,255,0.5); margin-left: 6px; }
-.nav-tabs { display: flex; gap: 4px; }
-.nav-tab {
-  padding: 6px 14px; border-radius: 6px; border: none;
-  background: transparent; color: rgba(255,255,255,0.6);
-  cursor: pointer; font-family: var(--sans); font-size: 13px;
-  transition: all 0.15s;
-}
-.nav-tab:hover { background: rgba(255,255,255,0.08); color: #fff; }
-.nav-tab.active { background: rgba(255,255,255,0.12); color: #fff; font-weight: 500; }
+.topbar{background:var(--navy);color:#fff;padding:0 24px;position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;height:56px;
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar-brand{display:flex;align-items:center;gap:10px}
+.topbar-logo{width:30px;height:30px;border-radius:6px;background:var(--blue-lt);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:12px;font-weight:500;color:#fff}
+.topbar-name{font-size:14px;font-weight:500;color:#fff}
+.topbar-sub{font-size:11px;color:rgba(255,255,255,.45);margin-left:6px}
+.nav-tabs{display:flex;gap:4px}
+.nav-tab{padding:6px 13px;border-radius:6px;border:none;background:transparent;
+  color:rgba(255,255,255,.55);cursor:pointer;font-family:var(--sans);font-size:13px;transition:all .15s}
+.nav-tab:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav-tab.active{background:rgba(255,255,255,.12);color:#fff;font-weight:500}
+.nav-link-ext{padding:6px 13px;border-radius:6px;color:var(--blue-lt);font-size:13px;
+  font-weight:500;text-decoration:none;transition:all .15s}
+.nav-link-ext:hover{background:rgba(255,255,255,.08)}
 
 /* ── Hero ── */
-.hero {
-  background: var(--navy);
-  color: #fff;
-  padding: 56px 24px 48px;
-}
-.hero-inner { max-width: 1100px; margin: 0 auto; }
-.hero-eyebrow {
-  font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px;
-  color: var(--blue-light); text-transform: uppercase; margin-bottom: 16px;
-}
-.hero-name { font-size: 42px; font-weight: 300; line-height: 1.15; margin-bottom: 8px; }
-.hero-name strong { font-weight: 500; }
-.hero-role { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 24px; }
-.hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
-.hero-badge {
-  font-size: 11px; padding: 4px 12px; border-radius: 20px; font-weight: 500;
-  border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.8);
-  background: rgba(255,255,255,0.06);
-}
-.hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 600px; }
-.hero-stat { }
-.hero-stat-num { font-size: 28px; font-weight: 300; color: #fff; font-family: var(--mono); }
-.hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+.hero{background:var(--navy);color:#fff;padding:48px 24px 40px}
+.hero-inner{max-width:1100px;margin:0 auto}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;
+  color:var(--blue-lt);text-transform:uppercase;margin-bottom:14px}
+.hero-name{font-size:38px;font-weight:300;margin-bottom:6px}
+.hero-name strong{font-weight:500}
+.hero-role{font-size:15px;color:rgba(255,255,255,.55);margin-bottom:20px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px}
+.hero-badge{font-size:11px;padding:3px 11px;border-radius:20px;font-weight:500;
+  border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.75);background:rgba(255,255,255,.06)}
+.hero-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:700px}
+.hero-stat-num{font-size:26px;font-weight:300;color:#fff;font-family:var(--mono)}
+.hero-stat-label{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
 
-/* ── Section tabs ── */
-.sections { }
-.section { display: none; padding: 40px 0; }
-.section.active { display: block; }
+/* ── Layout ── */
+.shell{max-width:1100px;margin:0 auto;padding:0 24px}
+.sections{padding:32px 0}
+.section{display:none;padding:0}
+.section.active{display:block}
+.sec-heading{font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;
+  color:var(--text-muted);font-family:var(--mono);margin-bottom:16px;margin-top:36px;
+  padding-bottom:8px;border-bottom:1px solid var(--border-lt)}
+.sec-heading:first-child{margin-top:0}
 
-/* ── Section headings ── */
-.sec-heading {
-  font-size: 13px; font-weight: 500; letter-spacing: 1px;
-  text-transform: uppercase; color: var(--text-muted);
-  font-family: var(--mono);
-  margin-bottom: 20px; margin-top: 40px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-light);
-}
-.sec-heading:first-child { margin-top: 0; }
+/* ── Cards ── */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin-bottom:32px}
+.proj-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
+  padding:18px;transition:border-color .15s,box-shadow .15s;display:flex;flex-direction:column}
+.proj-card:hover{border-color:var(--blue-lt);box-shadow:0 4px 16px rgba(30,100,170,.07)}
+.proj-num{font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-bottom:6px;
+  display:flex;align-items:center;gap:6px}
+.proj-title{font-size:14px;font-weight:500;margin-bottom:7px;line-height:1.35}
+.proj-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.proj-tag{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500}
+.tag-blue{background:#EFF6FF;color:#1D4ED8}
+.tag-teal{background:#F0FDFA;color:#0F766E}
+.tag-purple{background:#FAF5FF;color:#7C3AED}
+.tag-amber{background:#FFFBEB;color:#B45309}
+.tag-coral{background:#FFF5F5;color:#A0320A}
+.tag-green{background:#F0FDF4;color:#15803D}
+.proj-desc{font-size:12px;color:var(--text-mid);line-height:1.55;margin-bottom:10px;flex:1}
+.proj-stack{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.stack-chip{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:3px;
+  background:var(--bg-mid);color:var(--text-muted)}
+.proj-actions{display:flex;gap:7px;flex-wrap:wrap}
 
-/* ── Project cards ── */
-.proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-bottom: 40px; }
-.proj-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-  transition: border-color 0.15s, box-shadow 0.15s;
-  display: flex; flex-direction: column;
-}
-.proj-card:hover { border-color: var(--blue-light); box-shadow: 0 4px 16px rgba(30,100,170,0.08); }
-.proj-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
-.proj-num { font-family: var(--mono); font-size: 11px; color: var(--text-muted); }
-.proj-status { display: flex; align-items: center; gap: 5px; }
-.status-dot { width: 7px; height: 7px; border-radius: 50%; }
-.dot-planned { background: var(--border); }
-.dot-active { background: #F59E0B; }
-.dot-done { background: #10B981; }
-.status-label { font-size: 11px; color: var(--text-muted); }
-.proj-title { font-size: 15px; font-weight: 500; line-height: 1.35; margin-bottom: 8px; }
-.proj-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
-.proj-tag { font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
-.tag-blue { background: #EFF6FF; color: #1D4ED8; }
-.tag-teal { background: #F0FDFA; color: #0F766E; }
-.tag-purple { background: #FAF5FF; color: #7C3AED; }
-.tag-amber { background: #FFFBEB; color: #B45309; }
-.tag-coral { background: #FFF5F5; color: #C0392B; }
-.proj-desc { font-size: 13px; color: var(--text-mid); line-height: 1.55; margin-bottom: 12px; flex: 1; }
-.proj-stack { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
-.stack-chip {
-  font-family: var(--mono); font-size: 10px; padding: 2px 7px;
-  border-radius: 4px; background: var(--bg-mid); color: var(--text-muted);
-}
-.proj-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-.btn { padding: 7px 14px; border-radius: 7px; font-family: var(--sans); font-size: 12px; cursor: pointer; transition: all 0.15s; border: 1px solid var(--border); background: transparent; color: var(--text); }
-.btn:hover { background: var(--bg-mid); }
-.btn-primary { background: var(--navy); color: #fff; border-color: var(--navy); }
-.btn-primary:hover { background: var(--navy-mid); }
-.btn-sm { padding: 5px 11px; font-size: 11px; }
-.btn-cycle { background: var(--bg-mid); border-color: transparent; color: var(--text-muted); }
-.btn-cycle:hover { background: var(--border-light); }
+/* ── Buttons ── */
+.btn{padding:6px 13px;border-radius:7px;font-family:var(--sans);font-size:12px;
+  cursor:pointer;transition:all .15s;border:1px solid var(--border);background:transparent;color:var(--text)}
+.btn:hover{background:var(--bg-mid)}
+.btn-primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn-primary:hover{background:var(--navy-mid)}
+.btn-sm{padding:4px 10px;font-size:11px}
+.btn-cycle{background:var(--bg-mid);border-color:transparent;color:var(--text-muted)}
+.btn-cycle:hover{background:var(--border-lt)}
+
+/* ── Status dots ── */
+.status-dot{width:7px;height:7px;border-radius:50%}
+.dot-planned{background:var(--border)}
+.dot-active{background:#F59E0B}
+.dot-done{background:#10B981}
 
 /* ── Progress ── */
-.progress-block { margin-bottom: 20px; }
-.progress-row { display: grid; grid-template-columns: 220px 1fr 44px; align-items: center; gap: 12px; margin-bottom: 12px; }
-.progress-label { font-size: 13px; color: var(--text-mid); }
-.progress-bar { height: 6px; background: var(--border-light); border-radius: 3px; overflow: hidden; }
-.progress-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
-.fill-blue { background: var(--blue); }
-.fill-teal { background: var(--teal); }
-.fill-purple { background: var(--purple); }
-.progress-pct { font-family: var(--mono); font-size: 12px; color: var(--text-muted); text-align: right; }
+.progress-block{margin-bottom:20px}
+.progress-row{display:grid;grid-template-columns:200px 1fr 40px;align-items:center;gap:10px;margin-bottom:10px}
+.progress-label{font-size:12px;color:var(--text-mid)}
+.progress-bar{height:6px;background:var(--border-lt);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;transition:width .4s}
+.fill-blue{background:var(--blue)}.fill-teal{background:var(--teal)}
+.fill-green{background:var(--green)}.fill-purple{background:var(--purple)}
+.progress-pct{font-family:var(--mono);font-size:11px;color:var(--text-muted);text-align:right}
 
-/* ── Chapter grid ── */
-.ch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; margin-bottom: 32px; }
-.ch-card {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 12px;
-  display: flex; align-items: flex-start; gap: 10px;
-  cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
-  background: var(--bg-card);
-}
-.ch-card:hover { border-color: var(--blue-light); }
-.ch-card.done { background: #F0FDF8; border-color: #A7F3D0; }
-.ch-cb {
-  width: 18px; height: 18px; border-radius: 4px;
-  border: 1.5px solid var(--border);
-  flex-shrink: 0; margin-top: 1px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px; color: #fff;
-  transition: all 0.15s;
-}
-.ch-cb.checked { background: #10B981; border-color: #10B981; }
-.ch-text { font-size: 12px; line-height: 1.4; }
-.ch-num { font-size: 10px; color: var(--text-muted); font-family: var(--mono); margin-top: 2px; }
+/* ── Chapter + cert grids ── */
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:7px;margin-bottom:24px}
+.ch-card{border:1px solid var(--border);border-radius:8px;padding:9px 11px;
+  display:flex;align-items:flex-start;gap:9px;cursor:pointer;
+  transition:border-color .15s,background .15s;background:var(--bg-card)}
+.ch-card:hover{border-color:var(--blue-lt)}
+.ch-card.done{background:#F0FDF8;border-color:#A7F3D0}
+.ch-card.b1{border-left:3px solid var(--blue)}
+.ch-card.b2{border-left:3px solid var(--purple)}
+.ch-card.b3{border-left:3px solid var(--coral)}
+.ch-cb{width:17px;height:17px;border-radius:3px;border:1.5px solid var(--border);
+  flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:#fff;transition:all .15s}
+.ch-cb.checked{background:#10B981;border-color:#10B981}
+.ch-text{font-size:12px;line-height:1.4}
+.ch-meta{font-size:10px;color:var(--text-muted);font-family:var(--mono);margin-top:2px}
 
-/* ── Skills ── */
-.skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; margin-bottom: 32px; }
-.skill-pill {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 9px 12px;
-  display: flex; align-items: center; justify-content: space-between; gap: 8px;
-  background: var(--bg-card);
-  transition: border-color 0.15s;
-}
-.skill-pill.earned { background: #F0FDF8; border-color: #A7F3D0; }
-.skill-name { font-size: 12px; }
-.skill-level {
-  font-size: 10px; padding: 2px 7px; border-radius: 20px;
-  cursor: pointer; font-weight: 500; white-space: nowrap;
-  transition: all 0.15s;
-}
-.lvl-0 { background: var(--bg-mid); color: var(--text-muted); }
-.lvl-1 { background: #FFFBEB; color: #B45309; }
-.lvl-2 { background: #EFF6FF; color: #1D4ED8; }
-.lvl-3 { background: #F0FDF8; color: #0F766E; }
+/* ── Skill pills ── */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:7px;margin-bottom:24px}
+.skill-pill{border:1px solid var(--border);border-radius:7px;padding:8px 11px;
+  display:flex;align-items:center;justify-content:space-between;gap:7px;background:var(--bg-card)}
+.skill-pill.earned{background:#F0FDF8;border-color:#A7F3D0}
+.skill-name{font-size:12px}
+.skill-level{font-size:10px;padding:2px 6px;border-radius:20px;cursor:pointer;font-weight:500;white-space:nowrap}
+.lvl-0{background:var(--bg-mid);color:var(--text-muted)}
+.lvl-1{background:#FFFBEB;color:#B45309}
+.lvl-2{background:#EFF6FF;color:#1D4ED8}
+.lvl-3{background:#F0FDF8;color:#0F766E}
 
-/* ── Consulting ── */
-.consulting-hero {
-  background: linear-gradient(135deg, var(--navy) 0%, #1A3A5C 100%);
-  border-radius: 16px;
-  padding: 40px;
-  color: #fff;
-  margin-bottom: 32px;
-  position: relative;
-  overflow: hidden;
-}
-.consulting-hero::before {
-  content: 'NNCD';
-  position: absolute; right: 40px; top: 50%;
-  transform: translateY(-50%);
-  font-family: var(--mono); font-size: 80px; font-weight: 500;
-  color: rgba(255,255,255,0.04); letter-spacing: -2px;
-  pointer-events: none;
-}
-.ch-brand { font-family: var(--mono); font-size: 13px; color: var(--blue-light); margin-bottom: 10px; letter-spacing: 1px; }
-.ch-title { font-size: 30px; font-weight: 300; margin-bottom: 8px; }
-.ch-title strong { font-weight: 500; }
-.ch-sub { font-size: 14px; color: rgba(255,255,255,0.6); max-width: 520px; line-height: 1.6; }
+/* ── Cert cards ── */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-bottom:24px}
+.cert-card{border:1px solid var(--border);border-radius:9px;padding:11px 13px;background:var(--bg-card);
+  display:flex;align-items:flex-start;gap:10px;cursor:pointer;transition:all .15s}
+.cert-card:hover{border-color:var(--blue-lt)}
+.cert-card.earned{background:#F0FDF8;border-color:#A7F3D0}
+.cert-card.target{border-color:var(--amber);background:#FFFBEB}
+.cert-cb{width:17px;height:17px;border-radius:3px;border:1.5px solid var(--border);
+  flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:#fff;transition:all .15s}
+.cert-cb.checked{background:#10B981;border-color:#10B981}
+.cert-name{font-size:12px;font-weight:500;line-height:1.35}
+.cert-meta{font-size:10px;color:var(--text-muted);font-family:var(--mono);margin-top:3px}
+.cert-cost{font-size:10px;color:var(--amber);font-weight:500;margin-top:2px}
 
-.svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 32px; }
-.svc-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 22px;
-  display: flex; flex-direction: column;
-  position: relative;
-  transition: border-color 0.15s;
-}
-.svc-card:hover { border-color: var(--blue-light); }
-.svc-card.featured { border-color: var(--blue); }
-.svc-popular {
-  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
-  background: var(--blue); color: #fff;
-  font-size: 10px; font-weight: 500; padding: 3px 12px; border-radius: 20px;
-  white-space: nowrap;
-}
-.svc-icon { font-size: 24px; margin-bottom: 10px; }
-.svc-title { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
-.svc-duration { font-size: 11px; color: var(--text-muted); font-family: var(--mono); margin-bottom: 10px; }
-.svc-desc { font-size: 13px; color: var(--text-mid); line-height: 1.55; margin-bottom: 12px; flex: 1; }
-.svc-deliverables { margin-bottom: 12px; }
-.svc-deliverables li { font-size: 12px; color: var(--text-muted); list-style: none; padding-left: 14px; position: relative; margin-bottom: 4px; }
-.svc-deliverables li::before { content: "→"; position: absolute; left: 0; color: var(--blue-light); }
-.svc-price { font-size: 16px; font-weight: 500; color: var(--navy); margin-bottom: 14px; font-family: var(--mono); }
-.svc-btn { width: 100%; }
+/* ── Course cards ── */
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:7px;margin-bottom:24px}
+.course-card{border:1px solid var(--border);border-radius:8px;padding:10px 12px;
+  background:var(--bg-card);display:flex;align-items:flex-start;gap:9px;cursor:pointer;transition:all .15s}
+.course-card:hover{border-color:var(--blue-lt)}
+.course-card.done{background:#F0FDF8;border-color:#A7F3D0}
+.course-card.skip{opacity:.45}
+.course-text{font-size:12px;line-height:1.4}
+.course-meta{font-size:10px;color:var(--text-muted);margin-top:3px}
+.course-badge{font-size:9px;padding:2px 7px;border-radius:20px;font-weight:500;margin-top:4px;display:inline-block}
+.cb-done{background:#D1FAE5;color:#065F46}
+.cb-now{background:#FEE2E2;color:#991B1B}
+.cb-soon{background:#FEF3C7;color:#92400E}
+.cb-opt{background:#EDE9FE;color:#5B21B6}
+.cb-skip{background:var(--bg-mid);color:var(--text-muted)}
 
-.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px; }
-.step-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
-.step-num { font-family: var(--mono); font-size: 24px; font-weight: 500; color: var(--blue); display: block; margin-bottom: 6px; }
-.step-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
-.step-desc { font-size: 12px; color: var(--text-muted); line-height: 1.45; }
+/* ── Divider ── */
+.divider{height:.5px;background:var(--border);margin:1.5rem 0}
 
-.industry-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
-.ind-tag { font-size: 12px; padding: 5px 14px; border-radius: 20px; border: 1px solid var(--border); color: var(--text-mid); background: var(--bg-card); }
-
-.contact-box { background: var(--navy); border-radius: 12px; padding: 28px; color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-.contact-text h3 { font-size: 17px; font-weight: 500; margin-bottom: 4px; }
-.contact-text p { font-size: 13px; color: rgba(255,255,255,0.55); }
-.btn-contact { background: var(--blue-light); color: #fff; border-color: var(--blue-light); padding: 10px 22px; font-size: 13px; white-space: nowrap; }
-.btn-contact:hover { background: #2E90D6; }
+/* ── Book tabs ── */
+.book-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.book-tab{padding:5px 14px;border-radius:6px;border:1px solid var(--border);
+  font-size:12px;cursor:pointer;background:transparent;color:var(--text-muted);font-family:var(--sans)}
+.book-tab.active{font-weight:500;color:#fff}
+.book-tab.b1.active{background:var(--blue);border-color:var(--blue)}
+.book-tab.b2.active{background:var(--purple);border-color:var(--purple)}
+.book-tab.b3.active{background:var(--coral);border-color:var(--coral)}
+.book-legend{display:flex;gap:14px;margin-bottom:12px;flex-wrap:wrap}
+.book-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted)}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 
 /* ── GitHub section ── */
-.github-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 16px; }
-.github-box h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
-.github-box p { font-size: 13px; color: var(--text-muted); line-height: 1.55; margin-bottom: 12px; }
-.github-repos { display: flex; flex-direction: column; gap: 8px; }
-.repo-row { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 7px; background: var(--bg-mid); font-size: 12px; }
-.repo-name { font-family: var(--mono); font-size: 12px; color: var(--blue); font-weight: 500; flex: 1; }
-.repo-status { font-size: 11px; color: var(--text-muted); }
+.github-box{background:var(--bg-card);border:1px solid var(--border);border-radius:11px;
+  padding:20px;margin-bottom:12px}
+.github-box h3{font-size:14px;font-weight:500;margin-bottom:6px}
+.github-box p{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:10px}
+.repo-row{display:flex;align-items:center;gap:9px;padding:8px 11px;
+  border-radius:6px;background:var(--bg-mid);font-size:12px;margin-bottom:6px}
+.repo-name{font-family:var(--mono);font-size:11px;color:var(--blue);font-weight:500;flex:1}
+.code{font-family:var(--mono);font-size:11px;background:var(--bg-mid);
+  padding:1px 5px;border-radius:3px;color:var(--text-mid)}
 
 /* ── Footer ── */
-.footer { background: var(--navy); color: rgba(255,255,255,0.4); text-align: center; padding: 20px; font-size: 12px; margin-top: 60px; }
+.footer{background:var(--navy);color:rgba(255,255,255,.35);text-align:center;
+  padding:18px;font-size:11px;margin-top:48px}
 
-/* ── Responsive ── */
-@media (max-width: 700px) {
-  .hero-stats { grid-template-columns: repeat(2, 1fr); }
-  .process-grid { grid-template-columns: repeat(2, 1fr); }
-  .progress-row { grid-template-columns: 1fr 44px; }
-  .progress-row .progress-label { display: none; }
-  .topbar-sub { display: none; }
-  .nav-tab { padding: 6px 10px; font-size: 12px; }
-  .consulting-hero { padding: 28px; }
-  .consulting-hero::before { display: none; }
+@media(max-width:700px){
+  .hero-stats{grid-template-columns:repeat(3,1fr)}
+  .topbar-sub{display:none}
+  .nav-tab{padding:5px 9px;font-size:11px}
+  .progress-row{grid-template-columns:1fr 36px}
+  .progress-row .progress-label{display:none}
 }
 </style>
 </head>
@@ -311,292 +225,479 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); font
   <nav class="nav-tabs">
     <button class="nav-tab active" onclick="switchTab('portfolio')">Portfolio</button>
     <button class="nav-tab" onclick="switchTab('learning')">Learning tracker</button>
-    
+    <button class="nav-tab" onclick="switchTab('certs')">Certifications</button>
     <button class="nav-tab" onclick="switchTab('github')">GitHub setup</button>
-    <a href="nncd/index.html" class="nav-tab" style="text-decoration:none;color:var(--blue-light);font-weight:500">NNCD Consulting &rarr;</a>
+    <a href="nncd/index.html" class="nav-link-ext">NNCD Consulting →</a>
   </nav>
 </div>
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">AI Solutions Architect in Training</div>
+    <div class="hero-eyebrow">AI Solutions Architect in Training · April 2026</div>
     <div class="hero-name"><strong>Cedric Nono Ndefo</strong></div>
     <div class="hero-role">Presales Manager, Datavalet · Montreal, Canada · Bilingual FR/EN</div>
     <div class="hero-badges">
       <span class="hero-badge">10+ yrs enterprise presales</span>
       <span class="hero-badge">Google Cloud · Azure · AWS</span>
-      <span class="hero-badge">GenAI · MLOps · RAG</span>
-      <span class="hero-badge">Telco · Finance · Healthcare</span>
+      <span class="hero-badge">GenAI · MLOps · RAG · Agents</span>
+      <span class="hero-badge">Telco · Finance · Healthcare · Legal · Retail</span>
       <span class="hero-badge">PMP · MSc Telecoms · MBA</span>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><div class="hero-stat-num" id="s-proj">0/5</div><div class="hero-stat-label">Projects built</div></div>
       <div class="hero-stat"><div class="hero-stat-num" id="s-ch">0%</div><div class="hero-stat-label">Chapters done</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="s-cert">0/10</div><div class="hero-stat-label">Certs earned</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="s-course">2/13</div><div class="hero-stat-label">Courses done</div></div>
       <div class="hero-stat"><div class="hero-stat-num" id="s-sk">0</div><div class="hero-stat-label">Skills validated</div></div>
-      <div class="hero-stat"><div class="hero-stat-num" id="s-cert">0</div><div class="hero-stat-label">Certs earned</div></div>
     </div>
   </div>
 </div>
 
 <div class="shell sections">
 
-  <!-- ══ PORTFOLIO ══════════════════════════════════════════════════════════ -->
-  <div id="portfolio" class="section active">
-    <div class="sec-heading">Portfolio projects</div>
-    <div class="proj-grid" id="proj-grid"></div>
-    <div class="sec-heading">Technology stack</div>
-    <div class="skill-grid" id="skill-stack"></div>
-  </div>
-
-  <!-- ══ LEARNING TRACKER ═══════════════════════════════════════════════════ -->
-  <div id="learning" class="section">
-    <div class="sec-heading">Overall reading progress</div>
-    <div class="progress-block">
-      <div class="progress-row"><span class="progress-label">Book 1 — ML Solutions Architect Handbook (Ping)</span><div class="progress-bar"><div class="progress-fill fill-blue" id="pb1" style="width:0%"></div></div><span class="progress-pct" id="pp1">0%</span></div>
-      <div class="progress-row"><span class="progress-label">Book 2 — GenAI Integration Patterns (Bustos)</span><div class="progress-bar"><div class="progress-fill fill-teal" id="pb2" style="width:0%"></div></div><span class="progress-pct" id="pp2">0%</span></div>
-      <div class="progress-row"><span class="progress-label">Overall</span><div class="progress-bar"><div class="progress-fill fill-purple" id="pb3" style="width:0%"></div></div><span class="progress-pct" id="pp3">0%</span></div>
-    </div>
-    <div class="sec-heading">Book 1 — The ML Solutions Architect Handbook · 16 chapters</div>
-    <div class="ch-grid" id="ch-b1"></div>
-    <div class="sec-heading">Book 2 — Generative AI Integration Patterns · 10 chapters</div>
-    <div class="ch-grid" id="ch-b2"></div>
-    <div class="sec-heading">Skills validation — click a level badge to update</div>
-    <div class="skill-grid" id="skill-learn"></div>
-    <div style="margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-      <span style="font-size:12px;color:var(--text-muted)">Certifications earned:</span>
-      <button class="btn btn-sm btn-cycle" onclick="addCert()">+ Add cert</button>
-      <span id="cert-list" style="font-size:12px;color:var(--text-muted)"></span>
-    </div>
-  </div>
-
-    <!-- ══ GITHUB SETUP ═══════════════════════════════════════════════════════ -->
-  <div id="github" class="section">
-    <div class="sec-heading">GitHub deployment guide</div>
-    <div class="github-box">
-      <h3>Step 1 — Create your GitHub account and profile repository</h3>
-      <p>Go to github.com and create a free account. Use a professional username — ideally <code style="font-family:var(--mono);background:var(--bg-mid);padding:1px 5px;border-radius:3px">cedric-nono-ndefo</code> or <code style="font-family:var(--mono);background:var(--bg-mid);padding:1px 5px;border-radius:3px">nncd-consulting</code>. Then create a special repository with your exact username — GitHub will use it as your public profile README.</p>
-    </div>
-    <div class="github-box">
-      <h3>Step 2 — Create the portfolio site repository</h3>
-      <p>Create a new repository named <code style="font-family:var(--mono);background:var(--bg-mid);padding:1px 5px;border-radius:3px">portfolio</code>. Upload the <code style="font-family:var(--mono);background:var(--bg-mid);padding:1px 5px;border-radius:3px">nncd_hub.html</code> file you downloaded, rename it to <code style="font-family:var(--mono);background:var(--bg-mid);padding:1px 5px;border-radius:3px">index.html</code>. In repository Settings → Pages, set Source to "Deploy from a branch", select <code style="font-family:var(--mono);background:var(--bg-mid);padding:1px 5px;border-radius:3px">main</code> branch and <code style="font-family:var(--mono);background:var(--bg-mid);padding:1px 5px;border-radius:3px">/root</code>. Your site will be live at <code style="font-family:var(--mono);background:var(--bg-mid);padding:1px 5px;border-radius:3px">your-username.github.io/portfolio</code> within 2 minutes.</p>
-    </div>
-    <div class="github-box">
-      <h3>Step 3 — Create your 5 project repositories</h3>
-      <p>Create one repository per portfolio project as you build each one. Each repository needs a README.md file that tells the story of the project — what it does, what problem it solves, how to run it, and which industries it applies to.</p>
-      <div class="github-repos" id="github-repos"></div>
-    </div>
-    <div class="github-box">
-      <h3>Step 4 — Connect GitHub profile to LinkedIn and your CV</h3>
-      <p>Add your GitHub profile URL to your LinkedIn "Contact info" section and to the header of your CV. As you complete each project and push code to the repository, interviewers and potential NNCD clients can see your work in real time. Every commit is visible proof of active progress.</p>
-    </div>
-    <div class="github-box">
-      <h3>Updating the hub going forward</h3>
-      <p>When you want to update the hub — add a completed project, adjust NNCD service pricing, or change any content — open the <code style="font-family:var(--mono);background:var(--bg-mid);padding:1px 5px;border-radius:3px">index.html</code> file in GitHub directly, click the pencil edit icon, make your change, and click "Commit changes". The live site updates within 60 seconds. No coding tools required.</p>
-    </div>
-  </div>
-
+<!-- ══ PORTFOLIO ═══════════════════════════════════════════════════════ -->
+<div id="portfolio" class="section active">
+  <div class="sec-heading">Portfolio projects</div>
+  <div class="proj-grid" id="proj-grid"></div>
+  <div class="sec-heading">Technology stack</div>
+  <div class="skill-grid" id="skill-stack"></div>
 </div>
 
-<div class="footer">Cedric Nono Ndefo · NNCD Consulting · Montreal, Canada · Built with purpose.</div>
+<!-- ══ LEARNING TRACKER ════════════════════════════════════════════════ -->
+<div id="learning" class="section">
+  <div class="sec-heading">Reading progress — 3 books · 36 chapters total</div>
+  <div class="progress-block">
+    <div class="progress-row"><span class="progress-label">Book 1 — ML Solutions Architect Handbook (Ping · 16 ch)</span><div class="progress-bar"><div class="progress-fill fill-blue" id="pb1" style="width:0%"></div></div><span class="progress-pct" id="pp1">0%</span></div>
+    <div class="progress-row"><span class="progress-label">Book 2 — GenAI Integration Patterns (Bustos · 10 ch)</span><div class="progress-bar"><div class="progress-fill fill-purple" id="pb2" style="width:0%"></div></div><span class="progress-pct" id="pp2">0%</span></div>
+    <div class="progress-row"><span class="progress-label">Book 3 — AI Engineering (Huyen · 10 ch) · NEW</span><div class="progress-bar"><div class="progress-fill fill-green" id="pb3" style="width:0%"></div></div><span class="progress-pct" id="pp3">0%</span></div>
+    <div class="progress-row"><span class="progress-label">Overall (36 chapters)</span><div class="progress-bar"><div class="progress-fill fill-teal" id="pb4" style="width:0%"></div></div><span class="progress-pct" id="pp4">0%</span></div>
+  </div>
+
+  <div class="book-tabs">
+    <button class="book-tab b1 active" onclick="showBook('b1',this)">Book 1 — Ping (16)</button>
+    <button class="book-tab b2" onclick="showBook('b2',this)">Book 2 — Bustos (10)</button>
+    <button class="book-tab b3" onclick="showBook('b3',this)">Book 3 — Huyen (10)</button>
+  </div>
+  <div class="book-legend">
+    <div class="book-legend-item"><div class="legend-dot" style="background:var(--blue)"></div>Book 1 — Ping</div>
+    <div class="book-legend-item"><div class="legend-dot" style="background:var(--purple)"></div>Book 2 — Bustos</div>
+    <div class="book-legend-item"><div class="legend-dot" style="background:var(--coral)"></div>Book 3 — Huyen (NEW)</div>
+  </div>
+
+  <div id="ch-book1" class="ch-grid"></div>
+  <div id="ch-book2" class="ch-grid" style="display:none"></div>
+  <div id="ch-book3" class="ch-grid" style="display:none"></div>
+
+  <div class="divider"></div>
+  <div class="sec-heading">Anthropic Academy — 13 courses (CCA preparation)</div>
+  <div class="course-grid" id="course-grid"></div>
+
+  <div class="divider"></div>
+  <div class="sec-heading">Skills validation — click level badge to update</div>
+  <div class="skill-grid" id="skill-learn"></div>
+</div>
+
+<!-- ══ CERTIFICATIONS ══════════════════════════════════════════════════ -->
+<div id="certs" class="section">
+  <div class="sec-heading">Certification roadmap — 10 certifications · April – December 2026</div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+    <span style="font-size:13px;color:var(--text-muted)">Total investment: <strong style="color:var(--text)">~$1,305 USD</strong></span>
+    <span style="font-size:13px;color:var(--text-muted)">·</span>
+    <span style="font-size:13px;color:var(--text-muted)">Starting from <strong style="color:var(--text)">0 certifications</strong> today</span>
+    <span style="font-size:13px;color:var(--text-muted)">·</span>
+    <span id="cert-count-label" style="font-size:13px;color:var(--green);font-weight:500">0 earned so far</span>
+  </div>
+  <div class="cert-grid" id="cert-grid"></div>
+  <div class="divider"></div>
+  <div style="background:#FFFBEB;border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:8px">
+    <div style="font-size:13px;font-weight:500;color:var(--amber);margin-bottom:4px">Priority: Apply to Anthropic in June 2026</div>
+    <div style="font-size:12px;color:var(--text-mid)">After earning CCA + GCP ML Engineer, with Project 3 RAG assistant as your live demo. Do not wait for all 10 certifications.</div>
+  </div>
+</div>
+
+<!-- ══ GITHUB SETUP ════════════════════════════════════════════════════ -->
+<div id="github" class="section">
+  <div class="sec-heading">GitHub deployment guide</div>
+  <div class="github-box">
+    <h3>Step 1 — Create your GitHub account</h3>
+    <p>Go to github.com. Choose a professional username — <span class="code">cedric-nono-ndefo</span> or <span class="code">cndefo</span>. Create a repository named <span class="code">portfolio</span>. This becomes your public URL.</p>
+  </div>
+  <div class="github-box">
+    <h3>Step 2 — Publish the portfolio hub</h3>
+    <p>Upload this <span class="code">nncd_hub.html</span> file, rename it <span class="code">index.html</span>. In repository Settings → Pages → set Source to main branch, /root. Your site goes live at <span class="code">your-username.github.io/portfolio</span> in 2 minutes.</p>
+    <p style="color:var(--amber);font-size:12px;font-weight:500">Before publishing: replace YOUR-USERNAME in the 5 project GitHub links below.</p>
+  </div>
+  <div class="github-box">
+    <h3>Step 3 — Create the NNCD Consulting subfolder</h3>
+    <p>Create a new file named <span class="code">nncd/index.html</span> — GitHub creates the folder automatically. Paste the NNCD Consulting site content. Live at <span class="code">your-username.github.io/portfolio/nncd</span>.</p>
+  </div>
+  <div class="github-box">
+    <h3>Step 4 — Create your 5 project repositories</h3>
+    <div id="github-repos"></div>
+  </div>
+  <div class="github-box">
+    <h3>Step 5 — Add to LinkedIn and CV</h3>
+    <p>Add <span class="code">your-username.github.io/portfolio</span> to your LinkedIn Contact info and CV header. Every commit to your project repos is visible as active progress. Interviewers check GitHub.</p>
+  </div>
+</div>
+
+</div><!-- shell -->
+
+<div class="footer">Cedric Nono Ndefo · AI Portfolio · NNCD Consulting · Montreal, Canada</div>
 
 <script>
+// ── DATA ──────────────────────────────────────────────────────────────
 const PROJECTS = [
-  {num:"01",title:"Enterprise churn prediction API",tags:["ML","MLOps","Cloud deploy"],tagCols:["tag-blue","tag-teal","tag-purple"],desc:"XGBoost classifier with SHAP explainability served as a FastAPI REST endpoint, deployed to Vertex AI. Demonstrated in Telco, applicable to Banking, Retail, and SaaS.",stack:["Python","XGBoost","FastAPI","Docker","Vertex AI","MLflow","SHAP"],github:"cedric-churn-prediction-api"},
-  {num:"02",title:"Document intelligence pipeline",tags:["Batch GenAI","GCP","Structured output"],tagCols:["tag-amber","tag-teal","tag-blue"],desc:"Serverless batch pipeline (GCS → Cloud Functions → Pub/Sub → Gemini → BigQuery) that extracts structured data from any document type. Reframeable for Finance, Legal, and Healthcare.",stack:["Cloud Functions","Pub/Sub","Gemini API","BigQuery","LangChain","pytest"],github:"cedric-document-intelligence"},
-  {num:"03",title:"Domain RAG assistant",tags:["RAG","LangChain","Evaluation"],tagCols:["tag-purple","tag-blue","tag-teal"],desc:"Full RAG system with Chroma DB, Ragas evaluation suite, prompt injection prevention, and a live demo UI. The centrepiece project — applicable across all enterprise knowledge management problems.",stack:["LangChain","Chroma DB","Ragas","FastAPI","Gradio","Google Embeddings"],github:"cedric-rag-assistant"},
-  {num:"04",title:"Production AI service",tags:["CI/CD","MLOps","Responsible AI"],tagCols:["tag-coral","tag-amber","tag-purple"],desc:"The RAG assistant refactored as a production-grade service with GitHub Actions CI/CD, structured JSON logging, MLflow model registry, health endpoints, and a Responsible AI Policy document.",stack:["GitHub Actions","MLflow","Cloud Run","pytest","Structured logging","FastAPI"],github:"cedric-production-ai-service"},
-  {num:"05",title:"AI maturity assessment tool",tags:["AI strategy","Streamlit","Multi-industry"],tagCols:["tag-teal","tag-blue","tag-amber"],desc:"Interactive assessment implementing Ping's 5-level maturity framework across 6 dimensions. Generates a scored radar chart, prioritised 12-month roadmap, and industry-specific reports for Telco, Finance, Healthcare, and Retail.",stack:["Python","Streamlit","plotly","pandas","python-pptx"],github:"cedric-ai-maturity-tool"},
+  {num:"01",title:"Enterprise Churn Prediction API",
+   tags:["ML","MLOps","Vertex AI"],tagCols:["tag-blue","tag-teal","tag-green"],
+   desc:"XGBoost classifier with SHAP explainability served as FastAPI REST endpoint, deployed to Vertex AI. Demonstrated in Telco, applicable to Banking, Retail, and SaaS.",
+   stack:["Python","XGBoost","FastAPI","Docker","Vertex AI","MLflow","SHAP"],
+   months:"Jan–Mar 2026",cert:"GCP ML Eng + NCP-DS",github:"cedric-churn-prediction-api"},
+  {num:"02",title:"Document Intelligence Pipeline",
+   tags:["Batch GenAI","GCP","Structured output"],tagCols:["tag-amber","tag-teal","tag-blue"],
+   desc:"Serverless batch pipeline: GCS → Cloud Functions → Pub/Sub → Gemini → BigQuery. Extracts structured data from any document. Applicable to Finance, Legal, Healthcare.",
+   stack:["Cloud Functions","Pub/Sub","Gemini API","BigQuery","LangChain","pytest"],
+   months:"Mar–Apr 2026",cert:"NCA-AIIO + NCP-AII",github:"cedric-document-intelligence"},
+  {num:"03",title:"Domain RAG Assistant",
+   tags:["RAG","Agents","Evaluation"],tagCols:["tag-purple","tag-blue","tag-teal"],
+   desc:"Full RAG system with hybrid search, re-ranking, ReAct agent layer, Ragas evaluation suite, and live Gradio demo. The CCA exam demo project. Applicable to all enterprise knowledge management.",
+   stack:["LangChain","Chroma DB","Ragas","Claude API","FastAPI","Gradio"],
+   months:"May–Jun 2026",cert:"CCA demo + NCA-GENL",github:"cedric-rag-assistant"},
+  {num:"04",title:"Production AI Service",
+   tags:["CI/CD","MLOps","Responsible AI"],tagCols:["tag-coral","tag-amber","tag-purple"],
+   desc:"RAG assistant refactored as production-grade service: GitHub Actions CI/CD, structured JSON logging, MLflow registry, cost monitoring, health endpoints, Responsible AI Policy.",
+   stack:["GitHub Actions","MLflow","Cloud Run","pytest","Structured logging"],
+   months:"Jul–Sep 2026",cert:"NCP-AIO + NCP-AII",github:"cedric-production-ai-service"},
+  {num:"05",title:"AI Maturity Assessment Tool",
+   tags:["AI Strategy","Streamlit","Multi-industry"],tagCols:["tag-teal","tag-blue","tag-amber"],
+   desc:"Interactive Streamlit app implementing Ping's 5-level maturity framework across 6 dimensions. Generates radar charts, 12-month roadmaps, and industry-specific reports for Telco, Finance, Healthcare, Retail.",
+   stack:["Python","Streamlit","plotly","pandas","python-pptx"],
+   months:"Sep–Oct 2026",cert:"CCA foundations + AI-900",github:"cedric-ai-maturity-tool"},
 ];
 
 const BOOK1 = [
-  {num:"1",title:"Navigating the ML lifecycle"},{num:"2",title:"Exploring ML business use cases"},{num:"3",title:"Exploring ML algorithms"},{num:"4",title:"Data management for ML"},{num:"5",title:"Open-source ML libraries"},{num:"6",title:"Kubernetes container orchestration"},{num:"7",title:"Open-source ML platforms"},{num:"8",title:"Data science environment on AWS"},{num:"9",title:"Enterprise ML architecture"},{num:"10",title:"Advanced ML engineering"},{num:"11",title:"ML solutions with AWS AI services"},{num:"12",title:"AI risk and governance"},{num:"13",title:"Responsible AI in practice"},{num:"14",title:"AI/ML for business transformation"},{num:"15",title:"Generative AI and LLMs"},{num:"16",title:"Designing GenAI platforms"},
+  {n:"1",t:"Navigating the ML lifecycle"},{n:"2",t:"Exploring ML business use cases"},
+  {n:"3",t:"Exploring ML algorithms"},{n:"4",t:"Data management for ML"},
+  {n:"5",t:"Open-source ML libraries"},{n:"6",t:"Kubernetes container orchestration"},
+  {n:"7",t:"Open-source ML platforms"},{n:"8",t:"Data science environment on GCP/AWS"},
+  {n:"9",t:"Enterprise ML architecture"},{n:"10",t:"Advanced ML engineering"},
+  {n:"11",t:"ML solutions with AI services"},{n:"12",t:"AI risk and governance"},
+  {n:"13",t:"Responsible AI in practice"},{n:"14",t:"AI/ML for business transformation"},
+  {n:"15",t:"Generative AI and LLMs"},{n:"16",t:"Designing GenAI platforms and RAG"},
 ];
 const BOOK2 = [
-  {num:"1",title:"Introduction to GenAI patterns"},{num:"2",title:"Identifying GenAI use cases"},{num:"3",title:"Designing interaction patterns"},{num:"4",title:"Batch and real-time integration"},{num:"5",title:"Batch metadata extraction"},{num:"6",title:"Batch summarisation"},{num:"7",title:"Real-time intent classification"},{num:"8",title:"Real-time RAG"},{num:"9",title:"Operationalising GenAI patterns"},{num:"10",title:"Responsible AI in GenAI apps"},
+  {n:"1",t:"Introduction to GenAI patterns"},{n:"2",t:"Identifying GenAI use cases"},
+  {n:"3",t:"Designing interaction patterns"},{n:"4",t:"Batch and real-time integration"},
+  {n:"5",t:"Batch metadata extraction"},{n:"6",t:"Batch summarisation"},
+  {n:"7",t:"Real-time intent classification"},{n:"8",t:"Real-time RAG"},
+  {n:"9",t:"Operationalising GenAI patterns"},{n:"10",t:"Responsible AI in GenAI apps"},
 ];
+const BOOK3 = [
+  {n:"1",t:"Introduction to building AI applications"},
+  {n:"2",t:"Understanding foundation models"},
+  {n:"3",t:"Evaluation methodology"},
+  {n:"4",t:"Evaluate AI systems"},
+  {n:"5",t:"Prompt engineering"},
+  {n:"6",t:"RAG and agents"},
+  {n:"7",t:"Finetuning"},
+  {n:"8",t:"Dataset engineering"},
+  {n:"9",t:"Inference optimisation"},
+  {n:"10",t:"AI engineering architecture and user feedback"},
+];
+
+const COURSES = [
+  {n:"1",t:"AI Fluency: Framework & Foundations",s:"done",badge:"Done",cca:"CCA foundations"},
+  {n:"2",t:"Claude 101",s:"done",badge:"Done",cca:"CCA foundations"},
+  {n:"3",t:"Building with the Claude API",s:"now",badge:"Do now",cca:"CCA all 5 domains — 8.1 hrs"},
+  {n:"4",t:"AI Capabilities and Limitations",s:"soon",badge:"Week 1",cca:"CCA context & reliability (15%)"},
+  {n:"5",t:"Introduction to Model Context Protocol",s:"soon",badge:"Week 2",cca:"CCA tool design & MCP (18%)"},
+  {n:"6",t:"Introduction to Agent Skills",s:"soon",badge:"Week 3",cca:"CCA agentic architecture (27%)"},
+  {n:"7",t:"Introduction to Subagents",s:"soon",badge:"Week 3",cca:"CCA agentic arch — multi-agent"},
+  {n:"8",t:"Model Context Protocol: Advanced Topics",s:"soon",badge:"Week 4",cca:"CCA tool design — Python MCP servers"},
+  {n:"9",t:"Claude with Google Cloud's Vertex AI",s:"soon",badge:"Week 5",cca:"CCA deployment + Datavalet GCP stack"},
+  {n:"10",t:"Claude Code in Action",s:"soon",badge:"Week 5",cca:"CCA Claude Code workflows (20%)"},
+  {n:"11",t:"Claude with Amazon Bedrock",s:"soon",badge:"Week 6",cca:"CCA architecture patterns"},
+  {n:"12",t:"Introduction to Claude Cowork",s:"opt",badge:"Optional",cca:"NNCD Consulting demos"},
+  {n:"13",t:"AI Fluency for Educators / Students / Nonprofits",s:"skip",badge:"Skip",cca:"Not relevant to your goals"},
+];
+
+const CERTS = [
+  {n:"AI-900",full:"Microsoft AI-900 — Azure AI Fundamentals",cost:"$165",when:"Feb 2026",tier:"foundation",
+   prep:"Ping Ch1–2 + Huyen Ch1 + AI Fluency + Claude 101",
+   why:"Fastest AI credential. 4 weeks study. Opens Microsoft Canada conversations."},
+  {n:"CCA",full:"Anthropic CCA — Claude Certified Architect Foundations",cost:"$99",when:"May 2026",tier:"priority",
+   prep:"Anthropic Academy courses 3–10 + Huyen Ch5–6 + Ping Ch15–16 + Bustos Ch7–8 + Project 3",
+   why:"Anthropic's first official cert. $99. Most strategic credential in your plan. Scenario-based exam."},
+  {n:"GCP-ML",full:"GCP Professional ML Engineer",cost:"$200",when:"May 2026",tier:"priority",
+   prep:"Ping Ch4–9 + Bustos Ch4–6 + Claude with Vertex AI course + Vertex AI labs",
+   why:"Validates your Datavalet GCP stack. Most relevant cloud cert for Google Cloud Canada targeting."},
+  {n:"NCA-GENL",full:"NVIDIA NCA-GENL — Generative AI LLMs (Associate)",cost:"$125",when:"Jun 2026",tier:"foundation",
+   prep:"Ping Ch15 + Bustos Ch1–3 + Huyen Ch2 + Ch5 + NVIDIA DLI NCA-GENL guide (free)",
+   why:"Entry-point NVIDIA cert. 60-min exam. Validates GenAI LLM foundations at hardware vendor level."},
+  {n:"NCA-GENM",full:"NVIDIA NCA-GENM — Generative AI Multimodal (Associate)",cost:"$125",when:"Jul 2026",tier:"foundation",
+   prep:"Ping Ch16 multimodal + Huyen Ch2 multimodal + NVIDIA DLI NCA-GENM guide (free)",
+   why:"Extends GenAI credential to multimodal. Relevant for physical AI positioning in 2027+."},
+  {n:"NCA-AIIO",full:"NVIDIA NCA-AIIO — AI Infrastructure & Operations (Associate)",cost:"$125",when:"Aug 2026",tier:"foundation",
+   prep:"Ping Ch6 Kubernetes + Ch8–9 enterprise ML + Bustos Ch9 + NVIDIA DLI NCA-AIIO guide",
+   why:"Validates AI infrastructure knowledge. Differentiates you from pure software architects."},
+  {n:"AI-102",full:"Azure AI Engineer Associate (AI-102)",cost:"$165",when:"Sep 2026",tier:"foundation",
+   prep:"Ping Ch11 AI services + Bustos Ch7–8 + Huyen Ch1 AI stack + Microsoft Learn path (free)",
+   why:"Mid-level Azure credential. Targets Microsoft Canada. Microsoft Learn prep is free and comprehensive."},
+  {n:"NCP-AAI",full:"NVIDIA NCP-AAI — Agentic AI Professional",cost:"$200",when:"Oct 2026",tier:"advanced",
+   prep:"Bustos Ch7–9 + Huyen Ch6 agents deep dive + CCA experience + NVIDIA DLI Agentic AI course",
+   why:"Professional-level NVIDIA cert in fastest-growing AI domain. Builds directly on CCA preparation."},
+  {n:"NCP-DS",full:"NVIDIA NCP-DS — Accelerated Data Science Professional",cost:"$200",when:"Nov 2026",tier:"advanced",
+   prep:"Ping Ch3–5 ML algorithms + Huyen Ch8 dataset engineering + NVIDIA LaunchPad free GPU labs",
+   why:"Validates GPU-accelerated ML. Differentiates for data-intensive AI at healthcare, finance, telco."},
+  {n:"GCP-Arch",full:"GCP Professional Cloud Architect (optional)",cost:"$200",when:"Dec 2026",tier:"foundation",
+   prep:"Ping Ch8–9 cloud arch + GCP docs + Coursera GCP prep course",
+   why:"Optional. Broadens GCP credential beyond ML. Only attempt if actively interviewing for GCP roles."},
+];
+
 const SKILLS = [
-  "Python & pandas","scikit-learn / XGBoost","FastAPI REST APIs","Docker containers","MLflow tracking","Vertex AI deployment","LangChain / RAG","Chroma DB vectors","Ragas evaluation","SHAP explainability","GitHub Actions CI/CD","Prompt engineering","Structured logging","Responsible AI policy","AI maturity assessment","Cloud Functions / GCP","Gemini / Claude API","Streamlit / Gradio",
-];
-const SERVICES = [
-  {icon:"📚",title:"30-day RAG assistant",duration:"4 weeks · Fixed scope",desc:"Deploy an AI assistant grounded in your business documents — manuals, policies, product specs, past proposals. Staff ask questions in natural language and get accurate, cited answers.",deliverables:["Configured vector knowledge base","Web chat or API interface","Admin guide for adding documents","30-day support included"],price:"From $3,500 CAD",featured:true},
-  {icon:"📄",title:"Document intelligence setup",duration:"3 weeks · Fixed scope",desc:"Automate extraction of key information from recurring documents — contracts, invoices, reports, applications. Structured data output ready for your spreadsheet or CRM.",deliverables:["Configured extraction pipeline","Structured JSON or CSV output","Prompt templates for your docs","Accuracy evaluation report"],price:"From $2,800 CAD",featured:false},
-  {icon:"🗺️",title:"AI maturity assessment",duration:"1-day workshop + 1-week report",desc:"A structured half-day workshop scoring your organisation across 6 AI readiness dimensions. Delivered with a prioritised 12-month roadmap and use case shortlist.",deliverables:["Maturity radar chart and scores","Prioritised 12-month roadmap","Top 3 use case recommendations","Executive presentation deck"],price:"$1,800 CAD",featured:false},
-  {icon:"💬",title:"Custom AI chatbot",duration:"6 weeks · Fixed scope",desc:"A customer-facing or internal chatbot tailored to your specific workflows. Intent classification routes questions to the right response path, grounded in your knowledge base.",deliverables:["Deployed chatbot (web or API)","Intent routing configuration","Knowledge base integration","Monitoring dashboard"],price:"From $4,500 CAD",featured:false},
+  "Python & pandas","scikit-learn / XGBoost","FastAPI REST APIs","Docker containers",
+  "MLflow tracking","Vertex AI deployment","LangChain / RAG","Chroma DB vectors",
+  "Ragas evaluation","SHAP explainability","GitHub Actions CI/CD","Prompt engineering",
+  "Advanced prompting (Huyen)","Agent design (ReAct)","Inference optimisation","MCP integration",
+  "Structured logging","Responsible AI policy","AI maturity assessment","Evaluation-driven dev",
 ];
 
-function getState(){try{return JSON.parse(localStorage.getItem('nncd_v1')||'{}')}catch(e){return{}}}
-function save(s){try{localStorage.setItem('nncd_v1',JSON.stringify(s))}catch(e){}}
+// ── State ──────────────────────────────────────────────────────────────
+function gs(){try{return JSON.parse(localStorage.getItem('nncd_v2')||'{}')}catch{return{}}}
+function ss(s){try{localStorage.setItem('nncd_v2',JSON.stringify(s))}catch{}}
 
-function updateHeroStats(){
-  const st=getState();
-  const projDone=PROJECTS.filter(p=>st['proj_'+p.num]==='done').length;
-  const b1done=BOOK1.filter(c=>st['b1_'+c.num]).length;
-  const b2done=BOOK2.filter(c=>st['b2_'+c.num]).length;
-  const total=BOOK1.length+BOOK2.length;
-  const pct=Math.round((b1done+b2done)/total*100);
-  const skillsDone=SKILLS.filter(s=>(st['sk_'+s]||0)>=2).length;
-  const certs=(st.certs||[]).length;
+// ── Stats ──────────────────────────────────────────────────────────────
+function updateStats(){
+  const s=gs();
+  const projDone=PROJECTS.filter(p=>s['proj_'+p.num]==='done').length;
+  const b1d=BOOK1.filter(c=>s['b1_'+c.n]).length;
+  const b2d=BOOK2.filter(c=>s['b2_'+c.n]).length;
+  const b3d=BOOK3.filter(c=>s['b3_'+c.n]).length;
+  const total=BOOK1.length+BOOK2.length+BOOK3.length;
+  const pct=Math.round((b1d+b2d+b3d)/total*100);
+  const certsDone=CERTS.filter(c=>s['cert_'+c.n]).length;
+  const coursesDone=COURSES.filter(c=>s['course_'+c.n]||c.s==='done').length;
+  const skillsDone=SKILLS.filter(sk=>(s['sk_'+sk]||0)>=2).length;
   document.getElementById('s-proj').textContent=projDone+'/5';
   document.getElementById('s-ch').textContent=pct+'%';
+  document.getElementById('s-cert').textContent=certsDone+'/10';
+  document.getElementById('s-course').textContent=coursesDone+'/13';
   document.getElementById('s-sk').textContent=skillsDone;
-  document.getElementById('s-cert').textContent=certs;
+  if(document.getElementById('cert-count-label'))
+    document.getElementById('cert-count-label').textContent=certsDone+' earned so far';
 }
 
+// ── Portfolio ──────────────────────────────────────────────────────────
 function renderPortfolio(){
-  const st=getState();
+  const s=gs();
   const grid=document.getElementById('proj-grid');
+  if(!grid)return;
   grid.innerHTML='';
+  const cycle={planned:'active',active:'done',done:'planned'};
+  const labels={planned:'Planned',active:'In progress',done:'Done'};
   PROJECTS.forEach(p=>{
-    const status=st['proj_'+p.num]||'planned';
-    const labels={planned:'planned',active:'in progress',done:'done'};
-    const next={planned:'active',active:'done',done:'planned'};
+    const st=s['proj_'+p.num]||'planned';
     const d=document.createElement('div');
     d.className='proj-card';
-    d.innerHTML=`<div class="proj-header">
-      <span class="proj-num">Project ${p.num}</span>
-      <span class="proj-status"><span class="status-dot dot-${status}"></span><span class="status-label">${labels[status]}</span></span>
-    </div>
+    d.innerHTML=`<div class="proj-num"><span class="status-dot dot-${st}"></span>Project ${p.num} · ${p.months}</div>
     <div class="proj-title">${p.title}</div>
     <div class="proj-tags">${p.tags.map((t,i)=>`<span class="proj-tag ${p.tagCols[i]}">${t}</span>`).join('')}</div>
     <div class="proj-desc">${p.desc}</div>
-    <div class="proj-stack">${p.stack.map(s=>`<span class="stack-chip">${s}</span>`).join('')}</div>
+    <div class="proj-stack">${p.stack.map(x=>`<span class="stack-chip">${x}</span>`).join('')}</div>
+    <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">${p.cert}</div>
     <div class="proj-actions">
-      <button class="btn btn-sm btn-cycle" onclick="cycleProj('${p.num}')">Mark: ${next[status]}</button>
-      <a href="https://github.com/CedricNdefoNono/${p.github}" target="_blank" class="btn btn-sm">GitHub →</a>
+      <button class="btn btn-sm btn-cycle" onclick="cycleProj('${p.num}')">Mark: ${cycle[st]}</button>
+      <a href="https://github.com/YOUR-USERNAME/${p.github}" target="_blank" class="btn btn-sm">GitHub →</a>
     </div>`;
     grid.appendChild(d);
   });
   const sg=document.getElementById('skill-stack');
-  sg.innerHTML='';
-  SKILLS.forEach(s=>{
-    const lvl=st['sk_'+s]||0;
+  if(sg){
+    sg.innerHTML='';
     const labs=['—','Learning','Practised','Validated'];
-    const d=document.createElement('div');
-    d.className='skill-pill'+(lvl>=2?' earned':'');
-    d.innerHTML=`<span class="skill-name">${s}</span><span class="skill-level lvl-${lvl}">${labs[lvl]}</span>`;
-    sg.appendChild(d);
-  });
-  updateHeroStats();
+    SKILLS.forEach(sk=>{
+      const lvl=s['sk_'+sk]||0;
+      const d=document.createElement('div');
+      d.className='skill-pill'+(lvl>=2?' earned':'');
+      d.innerHTML=`<span class="skill-name">${sk}</span><span class="skill-level lvl-${lvl}">${labs[lvl]}</span>`;
+      sg.appendChild(d);
+    });
+  }
+  updateStats();
 }
 
 function cycleProj(num){
-  const st=getState();
+  const s=gs();
   const k='proj_'+num;
-  const cycle={planned:'active',active:'done',done:'planned'};
-  st[k]=cycle[st[k]||'planned'];
-  save(st);renderPortfolio();
+  const c={planned:'active',active:'done',done:'planned'};
+  s[k]=c[s[k]||'planned'];
+  ss(s);renderPortfolio();
 }
 
+// ── Learning ───────────────────────────────────────────────────────────
 function renderLearning(){
-  const st=getState();
-  const b1=BOOK1.filter(c=>st['b1_'+c.num]).length;
-  const b2=BOOK2.filter(c=>st['b2_'+c.num]).length;
-  const total=BOOK1.length+BOOK2.length;
-  const p1=Math.round(b1/BOOK1.length*100);
-  const p2=Math.round(b2/BOOK2.length*100);
-  const p3=Math.round((b1+b2)/total*100);
-  document.getElementById('pb1').style.width=p1+'%';
-  document.getElementById('pb2').style.width=p2+'%';
-  document.getElementById('pb3').style.width=p3+'%';
-  document.getElementById('pp1').textContent=p1+'%';
-  document.getElementById('pp2').textContent=p2+'%';
-  document.getElementById('pp3').textContent=p3+'%';
-  renderChapters('ch-b1',BOOK1,'b1');
-  renderChapters('ch-b2',BOOK2,'b2');
-  const sg=document.getElementById('skill-learn');
-  sg.innerHTML='';
-  const labs=['—','Learning','Practised','Validated'];
-  SKILLS.forEach(s=>{
-    const lvl=st['sk_'+s]||0;
-    const d=document.createElement('div');
-    d.className='skill-pill'+(lvl>=2?' earned':'');
-    d.innerHTML=`<span class="skill-name">${s}</span><span class="skill-level lvl-${lvl}" onclick="cycleSkill('${s.replace(/'/g,"\\'")}',this)">${labs[lvl]}</span>`;
-    sg.appendChild(d);
-  });
-  const certs=st.certs||[];
-  document.getElementById('cert-list').textContent=certs.length?certs.join(' · '):'None yet';
-  updateHeroStats();
+  const s=gs();
+  const b1d=BOOK1.filter(c=>s['b1_'+c.n]).length;
+  const b2d=BOOK2.filter(c=>s['b2_'+c.n]).length;
+  const b3d=BOOK3.filter(c=>s['b3_'+c.n]).length;
+  const total=BOOK1.length+BOOK2.length+BOOK3.length;
+  const setBar=(id,pct,pidEl)=>{
+    const el=document.getElementById(id);
+    const pe=document.getElementById(pidEl);
+    if(el)el.style.width=pct+'%';
+    if(pe)pe.textContent=pct+'%';
+  };
+  setBar('pb1',Math.round(b1d/BOOK1.length*100),'pp1');
+  setBar('pb2',Math.round(b2d/BOOK2.length*100),'pp2');
+  setBar('pb3',Math.round(b3d/BOOK3.length*100),'pp3');
+  setBar('pb4',Math.round((b1d+b2d+b3d)/total*100),'pp4');
+  renderChapters('ch-book1',BOOK1,'b1','b1');
+  renderChapters('ch-book2',BOOK2,'b2','b2');
+  renderChapters('ch-book3',BOOK3,'b3','b3');
+  renderCourses();
+  renderSkillsLearn();
+  updateStats();
 }
 
-function renderChapters(id,chapters,prefix){
-  const st=getState();
+function renderChapters(id,chapters,prefix,bookClass){
+  const s=gs();
   const g=document.getElementById(id);
+  if(!g)return;
   g.innerHTML='';
   chapters.forEach(c=>{
-    const done=!!st[prefix+'_'+c.num];
+    const done=!!s[prefix+'_'+c.n];
     const d=document.createElement('div');
-    d.className='ch-card'+(done?' done':'');
-    d.onclick=()=>toggleCh(prefix,c.num);
-    d.innerHTML=`<div class="ch-cb ${done?'checked':''}">${done?'✓':''}</div><div><div class="ch-text">${c.title}</div><div class="ch-num">Chapter ${c.num}</div></div>`;
+    d.className=`ch-card ${bookClass}`+(done?' done':'');
+    d.onclick=()=>toggleCh(prefix,c.n);
+    d.innerHTML=`<div class="ch-cb ${done?'checked':''}">${done?'✓':''}</div>
+    <div><div class="ch-text">${c.t}</div><div class="ch-meta">Ch ${c.n}</div></div>`;
     g.appendChild(d);
   });
 }
 
-function toggleCh(prefix,num){
-  const st=getState();
-  st[prefix+'_'+num]=!st[prefix+'_'+num];
-  save(st);renderLearning();
+function toggleCh(prefix,n){
+  const s=gs();
+  s[prefix+'_'+n]=!s[prefix+'_'+n];
+  ss(s);renderLearning();
+}
+
+function renderCourses(){
+  const s=gs();
+  const g=document.getElementById('course-grid');
+  if(!g)return;
+  g.innerHTML='';
+  const badgeClass={'done':'cb-done','now':'cb-now','soon':'cb-soon','opt':'cb-opt','skip':'cb-skip'};
+  COURSES.forEach(c=>{
+    const done=s['course_'+c.n]||(c.s==='done');
+    const d=document.createElement('div');
+    d.className='course-card'+(done?' done':'')+(c.s==='skip'?' skip':'');
+    d.onclick=()=>{if(c.s==='skip')return;const st=gs();st['course_'+c.n]=!st['course_'+c.n];ss(st);renderCourses();updateStats();};
+    d.innerHTML=`<div class="ch-cb ${done?'checked':''}">${done?'✓':''}</div>
+    <div><div class="course-text">${c.t}</div>
+    <div class="course-meta">${c.cca}</div>
+    <span class="course-badge ${badgeClass[c.s]||'cb-soon'}">${c.badge}</span>
+    <span class="course-badge" style="background:#E0F2FE;color:#0369A1;margin-left:4px">Free</span></div>`;
+    g.appendChild(d);
+  });
+}
+
+function renderSkillsLearn(){
+  const s=gs();
+  const g=document.getElementById('skill-learn');
+  if(!g)return;
+  g.innerHTML='';
+  const labs=['—','Learning','Practised','Validated'];
+  SKILLS.forEach(sk=>{
+    const lvl=s['sk_'+sk]||0;
+    const d=document.createElement('div');
+    d.className='skill-pill'+(lvl>=2?' earned':'');
+    d.innerHTML=`<span class="skill-name">${sk}</span><span class="skill-level lvl-${lvl}" onclick="cycleSkill('${sk.replace(/'/g,"\\'")}')">
+    ${labs[lvl]}</span>`;
+    g.appendChild(d);
+  });
 }
 
 function cycleSkill(name){
-  const st=getState();
-  const k='sk_'+name;
-  st[k]=((st[k]||0)+1)%4;
-  save(st);renderLearning();renderPortfolio();
+  const s=gs();
+  s['sk_'+name]=((s['sk_'+name]||0)+1)%4;
+  ss(s);renderLearning();renderPortfolio();
 }
 
-function addCert(){
-  const name=prompt('Certification name (e.g. GCP Professional ML Engineer):');
-  if(!name||!name.trim())return;
-  const st=getState();
-  st.certs=(st.certs||[]);
-  st.certs.push(name.trim());
-  save(st);renderLearning();
+function showBook(book,btn){
+  ['ch-book1','ch-book2','ch-book3'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.style.display='none';
+  });
+  document.querySelectorAll('.book-tab').forEach(t=>t.classList.remove('active'));
+  const target=document.getElementById('ch-'+book);
+  if(target)target.style.display='grid';
+  btn.classList.add('active');
 }
 
-function renderServices(){
-  const g=document.getElementById('svc-grid');
+// ── Certifications ─────────────────────────────────────────────────────
+function renderCerts(){
+  const s=gs();
+  const g=document.getElementById('cert-grid');
+  if(!g)return;
   g.innerHTML='';
-  SERVICES.forEach(s=>{
+  const tierColor={priority:'var(--coral)',foundation:'var(--blue)',advanced:'var(--purple)'};
+  CERTS.forEach(c=>{
+    const done=!!s['cert_'+c.n];
     const d=document.createElement('div');
-    d.className='svc-card'+(s.featured?' featured':'');
-    d.innerHTML=`${s.featured?'<div class="svc-popular">Most popular</div>':''}
-    <div class="svc-icon">${s.icon}</div>
-    <div class="svc-title">${s.title}</div>
-    <div class="svc-duration">${s.duration}</div>
-    <div class="svc-desc">${s.desc}</div>
-    <ul class="svc-deliverables">${s.deliverables.map(x=>`<li>${x}</li>`).join('')}</ul>
-    <div class="svc-price">${s.price}</div>
-    <a href="mailto:cedric.ndefonono@gmail.com?subject=NNCD%20Consulting%20%E2%80%94%20${encodeURIComponent(s.title)}" class="btn btn-primary svc-btn" style="text-align:center;display:block;text-decoration:none">Book a discovery call</a>`;
+    d.className='cert-card'+(done?' earned':c.n==='CCA'||c.n==='GCP-ML'?' target':'');
+    d.onclick=()=>{const st=gs();st['cert_'+c.n]=!st['cert_'+c.n];ss(st);renderCerts();updateStats();};
+    d.innerHTML=`<div class="cert-cb ${done?'checked':''}">${done?'✓':''}</div>
+    <div><div class="cert-name">${c.full}</div>
+    <div class="cert-meta">${c.when} · <span style="color:${tierColor[c.tier]||'var(--blue)'};font-weight:500">${c.tier}</span></div>
+    <div class="cert-cost">${c.cost}</div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:4px;line-height:1.45">${c.why}</div>
+    <div style="font-size:10px;color:var(--text-muted);margin-top:5px;font-style:italic">Prep: ${c.prep}</div></div>`;
     g.appendChild(d);
   });
+  const done=CERTS.filter(c=>s['cert_'+c.n]).length;
+  const el=document.getElementById('cert-count-label');
+  if(el)el.textContent=done+' earned so far';
 }
 
+// ── GitHub ─────────────────────────────────────────────────────────────
 function renderGitHub(){
+  const s=gs();
   const g=document.getElementById('github-repos');
+  if(!g)return;
   g.innerHTML='';
   PROJECTS.forEach(p=>{
-    const st=getState();
-    const status=st['proj_'+p.num]||'planned';
+    const st=s['proj_'+p.num]||'planned';
     const labels={planned:'Not started',active:'In progress',done:'Published'};
     const d=document.createElement('div');
     d.className='repo-row';
-    d.innerHTML=`<span class="status-dot dot-${status}"></span><span class="repo-name">cedric-${p.github.replace('cedric-','')}</span><span class="repo-status">${p.title}</span><span class="repo-status" style="margin-left:auto">${labels[status]}</span>`;
+    d.innerHTML=`<span class="status-dot dot-${st}"></span>
+    <span class="repo-name">${p.github}</span>
+    <span style="font-size:11px;color:var(--text-muted)">${p.title}</span>
+    <span style="margin-left:auto;font-size:11px;color:var(--text-muted)">${labels[st]}</span>`;
     g.appendChild(d);
   });
 }
 
+// ── Tab switching ──────────────────────────────────────────────────────
 function switchTab(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.nav-tab').forEach(t=>{if(t.getAttribute('onclick')&&t.getAttribute('onclick').includes("'"+id+"'"))t.classList.add('active')});
+  const sec=document.getElementById(id);
+  if(sec)sec.classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t=>{
+    if(t.getAttribute('onclick')&&t.getAttribute('onclick').includes("'"+id+"'"))
+      t.classList.add('active');
+  });
   if(id==='learning')renderLearning();
+  if(id==='certs')renderCerts();
   if(id==='github')renderGitHub();
 }
 
+// ── Init ───────────────────────────────────────────────────────────────
 renderPortfolio();
+renderCerts();
 renderLearning();
+updateStats();
 </script>
 </body>
 </html>
